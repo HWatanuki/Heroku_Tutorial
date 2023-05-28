@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect, url_for, session
 from flask_wtf import FlaskForm
-from wtforms import TextField,SubmitField
+from wtforms import StringField,SubmitField
 from wtforms.validators import NumberRange
 
 import numpy as np  
@@ -46,10 +46,10 @@ flower_scaler = joblib.load("iris_scaler.pkl")
 # Lots of fields available:
 # http://wtforms.readthedocs.io/en/stable/fields.html
 class FlowerForm(FlaskForm):
-    sep_len = TextField('Sepal Length')
-    sep_wid = TextField('Sepal Width')
-    pet_len = TextField('Petal Length')
-    pet_wid = TextField('Petal Width')
+    sep_len = StringField('Sepal Length')
+    sep_wid = StringField('Sepal Width')
+    pet_len = StringField('Petal Length')
+    pet_wid = StringField('Petal Width')
 
     submit = SubmitField('Analyze')
 
