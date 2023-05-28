@@ -25,7 +25,9 @@ def return_prediction(model,scaler,sample_json):
     
     classes = np.array(['setosa', 'versicolor', 'virginica'])
     
-    class_ind = model.predict_classes(flower)
+    predict_x = model.predict(flower)
+    
+    class_ind=np.argmax(predict_x,axis=1)
     
     return classes[class_ind][0]
 
@@ -38,8 +40,8 @@ app.config['SECRET_KEY'] = 'someRandomKey'
 
 
 # REMEMBER TO LOAD THE MODEL AND THE SCALER!
-flower_model = load_model("final_iris_model.h5")
-flower_scaler = joblib.load("iris_scaler.pkl")
+flower_model = load_model('final_iris_model.h5')
+flower_scaler = joblib.load('iris_scaler.pkl')
 
 
 # Now create a WTForm Class
